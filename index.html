@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StepWin - Walk More, Win More</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#f5f7fb;
+color:#222;
+line-height:1.6;
+}
+
+header{
+background:linear-gradient(135deg,#00c853,#009688);
+color:white;
+padding:20px 8%;
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200');
+background-size:cover;
+background-position:center;
+color:white;
+padding:20px;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:22px;
+margin-bottom:25px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:#00e676;
+color:black;
+font-weight:bold;
+border-radius:30px;
+text-decoration:none;
+transition:.3s;
+}
+
+.btn:hover{
+background:white;
+}
+
+section{
+padding:100px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+margin-bottom:15px;
+}
+
+.stats{
+background:#00c853;
+color:white;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+text-align:center;
+gap:20px;
+}
+
+.stat-box h2{
+font-size:50px;
+}
+
+.steps{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.step{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.step span{
+font-size:40px;
+font-weight:bold;
+color:#00c853;
+}
+
+.leaderboard{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#00c853;
+color:white;
+padding:15px;
+}
+
+td{
+padding:15px;
+border-bottom:1px solid #ddd;
+}
+
+.faq{
+max-width:800px;
+margin:auto;
+}
+
+.faq-item{
+background:white;
+margin-bottom:15px;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+.faq-question{
+padding:20px;
+cursor:pointer;
+font-weight:bold;
+background:#00c853;
+color:white;
+}
+
+.faq-answer{
+padding:20px;
+display:none;
+}
+
+.contact{
+text-align:center;
+background:#009688;
+color:white;
+}
+
+.contact h2{
+margin-bottom:20px;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.darkmode{
+position:fixed;
+right:20px;
+bottom:20px;
+padding:15px;
+border:none;
+border-radius:50%;
+cursor:pointer;
+background:#00c853;
+font-size:20px;
+}
+
+.dark{
+background:#121212;
+color:white;
+}
+
+.dark .card,
+.dark .step,
+.dark .faq-item,
+.dark .leaderboard{
+background:#1e1e1e;
+color:white;
+}
+
+.dark td{
+border-color:#333;
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:40px;
+}
+
+.section-title{
+font-size:30px;
+}
+
+nav ul{
+display:none;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">STEPWIN</div>
+
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#leaderboard">Leaderboard</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Walk More. Win More.</h1>
+<p>Join fitness challenges, track steps and compete for rewards.</p>
+<a href="#" class="btn">Join Challenge ₹299</a>
+</div>
+</section>
+
+<section class="stats">
+<div class="stat-box">
+<h2 id="users">0</h2>
+<p>Users</p>
+</div>
+
+<div class="stat-box">
+<h2 id="steps">0</h2>
+<p>Steps Recorded</p>
+</div>
+
+<div class="stat-box">
+<h2 id="winners">0</h2>
+<p>Winners</p>
+</div>
+</section>
+
+<section id="features">
+<h2 class="section-title">Features</h2>
+
+<div class="features">
+
+<div class="card">
+<h3>Step Tracking</h3>
+<p>Sync your steps automatically.</p>
+</div>
+
+<div class="card">
+<h3>Live Leaderboard</h3>
+<p>Compete with participants.</p>
+</div>
+
+<div class="card">
+<h3>Rewards</h3>
+<p>Earn rewards for consistency.</p>
+</div>
+
+<div class="card">
+<h3>Admin Dashboard</h3>
+<p>Manage users and challenges.</p>
+</div>
+
+</div>
+</section>
+
+<section id="how">
+<h2 class="section-title">How It Works</h2>
+
+<div class="steps">
+
+<div class="step">
+<span>1</span>
+<h3>Register</h3>
+<p>Create your account.</p>
+</div>
+
+<div class="step">
+<span>2</span>
+<h3>Join</h3>
+<p>Enter the challenge.</p>
+</div>
+
+<div class="step">
+<span>3</span>
+<h3>Walk</h3>
+<p>Track your daily steps.</p>
+</div>
+
+<div class="step">
+<span>4</span>
+<h3>Win</h3>
+<p>Top users earn rewards.</p>
+</div>
+
+</div>
+</section>
+
+<section id="leaderboard">
+<h2 class="section-title">Leaderboard Preview</h2>
+
+<div class="leaderboard">
+
+<table>
+
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>Steps</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Rahul</td>
+<td>154,200</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Aman</td>
+<td>149,800</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Priya</td>
+<td>145,600</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Neha</td>
+<td>141,100</td>
+</tr>
+
+</table>
+
+</div>
+</section>
+
+<section id="faq">
+<h2 class="section-title">Frequently Asked Questions</h2>
+
+<div class="faq">
+
+<div class="faq-item">
+<div class="faq-question">How are steps counted?</div>
+<div class="faq-answer">
+Automatically through supported health apps.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Is the leaderboard live?</div>
+<div class="faq-answer">
+Yes, rankings update automatically.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Can I join anytime?</div>
+<div class="faq-answer">
+You can join active challenges.
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="contact">
+<h2>Ready To Start?</h2>
+<p>Join thousands of users today.</p>
+<br>
+<a href="#" class="btn">Register Now</a>
+</section>
+
+<footer>
+<p>© 2026 StepWin. All Rights Reserved.</p>
+</footer>
+
+<button class="darkmode">🌙</button>
+
+<script>
+
+function animateValue(id,start,end,duration){
+
+let obj=document.getElementById(id);
+
+let range=end-start;
+
+let current=start;
+
+let increment=end>start?1:-1;
+
+let stepTime=Math.abs(Math.floor(duration/range));
+
+let timer=setInterval(function(){
+
+current+=increment;
+
+obj.innerHTML=current.toLocaleString();
+
+if(current==end){
+clearInterval(timer);
+}
+
+},stepTime);
+
+}
+
+animateValue("users",0,12000,2000);
+animateValue("steps",0,500000,3000);
+animateValue("winners",0,350,2000);
+
+document.querySelectorAll(".faq-question")
+.forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+let answer=item.nextElementSibling;
+
+if(answer.style.display==="block"){
+answer.style.display="none";
+}else{
+answer.style.display="block";
+}
+
+});
+
+});
+
+let dark=document.querySelector(".darkmode");
+
+dark.addEventListener("click",()=>{
+
+document.body.classList.toggle("dark");
+
+});
+
+</script>
+
+</body>
+</html>
